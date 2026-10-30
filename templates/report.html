@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Segoe UI'; background: #eef2f7; padding: 40px; }
+        .report-card { max-width: 800px; margin: auto; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; border-top: 10px solid #4e73df; }
+        .header { padding: 30px; background: #f8f9fc; border-bottom: 2px solid #eee; text-align: center; }
+        .body { padding: 40px; text-align: center; }
+        .disease-img { width: 100%; max-width: 500px; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 25px; border: 3px solid #eee; }
+        .summary-box { background: #f0f7ff; padding: 20px; border-radius: 10px; text-align: left; margin-top: 25px; border-left: 5px solid #4e73df; }
+        .doctor-box { background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: bold; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="report-card">
+        <div class="header">
+            <h1 style="margin:0; color:#4e73df;">DIAGNOSIS REPORT</h1>
+            <p>Patient: <b>{{ user }}</b></p>
+        </div>
+        <div class="body">
+            <img src="{{ info.img }}" class="disease-img">
+            
+            <h2 style="color: #e74a3b; font-size: 30px;">Result: {{ info.disease }}</h2>
+
+            <div style="text-align: left;">
+                <h3 style="color:#4e73df;">⚠️ Precautions:</h3>
+                <p style="font-size: 17px; line-height: 1.6;">{{ info.precautions }}</p>
+
+                <div class="summary-box">
+                    <h4 style="margin-top:0;">📝 AI Summary:</h4>
+                    <p>{{ info.summary }} (Symptoms: {{ ", ".join(selected) }})</p>
+                </div>
+
+                <div class="doctor-box">
+                    👨‍⚕️ Consultant Specialist: <span style="font-size: 18px; color: #856404;">{{ info.doctor }}</span>
+                </div>
+            </div>
+            <br>
+            <a href="/dashboard" style="text-decoration:none; color:#4e73df; font-weight:bold;">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

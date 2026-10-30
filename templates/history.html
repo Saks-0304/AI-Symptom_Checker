@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical History</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 20px; color: #333; }
+        .card { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); }
+        h2 { color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 15px; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 25px; }
+        th, td { padding: 15px; border: 1px solid #eee; text-align: left; }
+        th { background: #1a73e8; color: white; text-transform: uppercase; font-size: 14px; }
+        tr:hover { background-color: #f8f9fa; }
+        .status { font-weight: bold; color: #d93025; }
+        .btn { display: inline-block; margin-top: 25px; padding: 12px 25px; background: #1a73e8; color: white; text-decoration: none; border-radius: 8px; transition: 0.3s; }
+        .btn:hover { background: #1557b0; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>📜 Patient Consultation History</h2>
+        <p>User: <b>{{ user }}</b></p>
+        
+        {% if history %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Diagnosis Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for h in history %}
+                <tr>
+                    <td>{{ h.date }}</td>
+                    <td>{{ h.time }}</td>
+                    <td class="status">{{ h.disease }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div style="text-align: center; padding: 40px;">
+            <p style="color: #666;">No past records found. Start your first checkup now!</p>
+        </div>
+        {% endif %}
+
+        <div style="text-align: center;">
+            <a href="/dashboard" class="btn">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
